@@ -1,11 +1,17 @@
-from flask import Flask, render_template
+from flask import Flask
 
 app = Flask(__name__)
+PORT = 5000
+DEBUG = False
 
-@app.route('/')
+@app.errorhandler(404)
+def not_found(error):
+    return "Hubo algun error"
+
+@app.route('/', methods=['GET'])
 def index():
-    return render_template('test.html')
+    return "HOLA PRUEBA DE MICROSERVICIOS"
 
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    app.run(port=PORT, debug=DEBUG)
