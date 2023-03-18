@@ -2,11 +2,7 @@ from flask import Flask
 
 app = Flask(__name__)
 PORT = 5000
-DEBUG = False
-
-@app.errorhandler(404)
-def not_found(error):
-    return "Hubo algun error"
+DEBUG = True
 
 @app.route('/', methods=['GET'])
 def index():
